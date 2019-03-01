@@ -1,4 +1,4 @@
-## ZapZap
+## Zap
 
 Apenas um atalho para facilitar a comunicação com números desconhecidos sem precisar salvar o contato na agenda.
 
