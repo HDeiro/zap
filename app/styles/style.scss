@@ -1,0 +1,84 @@
+$main-color: #42C553;
+$light-color: #fff;
+$font-family: Arial, Helvetica, sans-serif;
+
+%flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    @extend %flex-center;
+    padding: 0;
+    margin: 0;
+    background-color: lighten($main-color, 40);
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    @extend %flex-center;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 30vw;
+    height: 60vh;
+
+    @media (max-width: 600px) {
+        max-width: 90vw;
+        margin-bottom: 150px;
+    }
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 32px;
+}
+
+.input {
+    font-family: $font-family;
+    border: none;
+    padding: 12px 6px;
+    width: calc(100% - 12px);
+    outline-color: $main-color;
+    font-size: 14px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    transition: border-color 300ms ease-out;
+    line-height: 1.5em;
+}
+
+.button {
+    width: 100%;
+    font-size: 14px;
+    color: $light-color;
+    background-color: $main-color;
+    border: none;
+    min-height: 46px;
+    transition: background-color 300ms ease-out;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &[disabled] {
+        background-color: lightgray;
+    }
+
+    &:not([disabled]):hover {
+        background: darken($main-color, 15);
+    }
+}
+
+#message {
+    resize: none;
+}
+
+#github {
+    font-size: 18px;
+    color: #222;
+    font-weight: 600;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: $font-family;
+    text-decoration: none;
+}
