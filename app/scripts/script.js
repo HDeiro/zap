@@ -4,6 +4,19 @@ const country = document.querySelector("#countryCode");
 const message = document.querySelector("#message");
 
 number.onkeyup = _ => submit.disabled = number.isInvalid();
+number.isInvalid = _ => {
+    if(!number.value.length) {
+        return true;
+    }
+
+    if(/\D/.test(number.value)) {
+        return true;
+    }
+
+    if(!/\d{11}|\d{10}/.test(number.value) && country.value === '55') {
+        return true;
+    }
+}
 
 // On start
 (() => {
@@ -20,7 +33,6 @@ number.onkeyup = _ => submit.disabled = number.isInvalid();
         // Number checking for Brazil
         number.maxlength = 11;
         number.minlength = 10;
-        number.isInvalid = _ => !/\d{11}|\d{10}/.test(number.value) && country.value === '55';
     } else {
         // Language treatment
         countryCode.title = "Country Code";
@@ -29,8 +41,6 @@ number.onkeyup = _ => submit.disabled = number.isInvalid();
         message.placeholder = "Message to be sent (Max 225 characters)";
         message.title = "Message to be sent (Max 225 characters)";
         submit.textContent = "Enviar Mensagem";
-        // No number check for other countries
-        number.isInvalid = _ => false;
     }
 
     number.focus();
