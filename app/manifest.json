@@ -1,0 +1,22 @@
+{
+    "short_name": "Zap",
+    "name": "Zap",
+    "description": "A shortcut to talk with contacts that you do not have saved in your contact list",
+    "icons": [
+      {
+        "src": "/images/logo-pwa-128.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      },
+      {
+        "src": "/images/logo-pwa-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/zap?source=pwa",
+    "background_color": "#2c8f39",
+    "theme_color": "#2c8f39",
+    "display": "standalone",
+    "scope": "/zap"
+  }

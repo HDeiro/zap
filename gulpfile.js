@@ -25,6 +25,7 @@ const fs = require('fs');
 const yargs = require('yargs').argv;
 const gulpif = require('gulp-if');
 const sprity = require('sprity');
+const jsonmin = require('gulp-jsonmin');
 
 //####################################
 // List of Gulp tasks
@@ -49,7 +50,8 @@ const tasks = {
     server: 'server',
     images: 'images',
     production: 'production',
-    clean: 'clean'
+    clean: 'clean',
+    json: 'jsonmin'
 };
 
 //####################################
@@ -68,6 +70,11 @@ const tasks = {
 const project_dist = 'www';
 const project_src = 'app';
 const paths = {
+    //JSONS
+    jsons: {
+        origin: `${project_src}/*.json`,
+        dest: `${project_dist}`
+    },
     // JavaScripts
     scripts: {
         dest: `${project_dist}/js`,
@@ -120,6 +127,12 @@ const paths = {
 // with code concatenation, uglification,
 // replaces and a lot of other possibilities
 //####################################
+
+gulp.task(tasks.json, () => {
+    gulp.src(paths.jsons.origin)
+        .pipe(jsonmin())
+        .pipe(gulp.dest(paths.jsons.dest));
+})
 
 gulp.task(tasks.css, () => {
     const cssStream = gulp.src(paths.styles.origin.external);
@@ -203,6 +216,7 @@ gulp.task(tasks.server, () => {
     gulp.watch(paths.scripts.origin.internal_root + '/**/*.js', [tasks.js_concat]).on('change', bsync.reload);
     gulp.watch(paths.styles.origin_root + '/**/*.scss', [tasks.css]).on('change', bsync.reload);
     gulp.watch(paths.views.origin, [tasks.html]).on('change', bsync.reload);
+    gulp.watch(paths.jsons.origin, [tasks.json]).on('change', bsync.reload);
 });
 
 gulp.task(tasks.images, () => {

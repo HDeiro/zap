@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "gulp-if": "^2.0.2",
+    "gulp-jsonmin": "^1.2.0",
     "sprity": "^1.0.8",
     "sprity-sass": "^1.0.4"
   }
