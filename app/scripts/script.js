@@ -26,14 +26,15 @@ number.onkeyup = _ => submit.disabled = number.isInvalid();
         countryCode.title = "Country Code";
         number.placeholder = "Phone number";
         number.title = "Phone number";
-        message.placeholder = "Message to be sent (Máx 225 characters)";
-        message.title = "Message to be sent (Máx 225 characters)";
+        message.placeholder = "Message to be sent (Max 225 characters)";
+        message.title = "Message to be sent (Max 225 characters)";
         submit.textContent = "Enviar Mensagem";
         // No number check for other countries
         number.isInvalid = _ => false;
     }
 
     number.focus();
+    number.click();
 })();
 
 // Handle pasting of number

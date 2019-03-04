@@ -260,7 +260,7 @@ gulp.task(tasks.sprites, () => {
 gulp.task(tasks.html_replace, () => {
     runsequence(tasks.html, () => {
         let css = `${paths.styles.dest}/style.css`;
-        let js = `${paths.scripts.dest}/script.js`;
+        let js = yargs.xjsmin ? `${paths.scripts.dest}/script.min.js` : `${paths.scripts.dest}/script.js`;
 
         // Use gulp htmlreplace --xcss
         if(yargs.xcss) {
@@ -275,7 +275,7 @@ gulp.task(tasks.html_replace, () => {
         //
         // You can use like: gulp htmlreplace --xjs --xcss
         // to apply css and javascript replacement
-        if(yargs.xjs) {
+        if(yargs.xjs || yargs.xjsmin) {
             //Take the content of JavaScript concatenated file and put it direct on body of index.html
             js = fs.readFileSync(js, 'utf8');
             js = `<script>${js}</script>`;
